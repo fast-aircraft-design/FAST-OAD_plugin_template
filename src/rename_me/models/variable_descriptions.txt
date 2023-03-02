@@ -1,0 +1,6 @@
+# Documentation of variables used in FAST-OAD models
+# Each line should be like:
+# my:variable||The description of my:variable, as long as needed, but on one line.
+# The separator "||" can be surrounded with spaces (that will be ignored)
+
+data:my:example || Replace this line by relevant information about your models
