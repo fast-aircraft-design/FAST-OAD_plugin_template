@@ -1,0 +1,31 @@
+title: Sample OAD Process
+
+# List of folder paths where user added custom registered OpenMDAO components
+module_folders:
+
+# Input and output files
+input_file: ../results/problem_inputs.xml
+output_file: ../results/problem_outputs.xml
+
+# Definition of problem driver assuming the OpenMDAO convention "import openmdao.api as om"
+driver: om.ScipyOptimizeDriver(tol=1e-2, optimizer='COBYLA')
+
+# Definition of OpenMDAO model
+# Although "model" is a mandatory name for the top level of the model, its
+# sub-components can be freely named by user
+model:
+
+  #  Solvers are defined assuming the OpenMDAO convention "import openmdao.api as om"
+  nonlinear_solver: om.NonlinearBlockGS(maxiter=100, atol=1e-2)
+  linear_solver: om.DirectSolver()
+
+  sample_discipline:
+    id: fastoad.sample_plugin.sample_discipline
+
+optimization: # This section is needed only if optimization process is run
+  design_variables:
+    - name: sample_input
+      lower: 0.0
+      upper: 1.0
+  objective:
+    - name: sample_output
