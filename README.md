@@ -12,7 +12,7 @@ suited to your project.
 It is assumed that you know how to use [Git](https://git-scm.com), 
 [Python](https://www.python.org) and [FAST-OAD](https://github.com/fast-aircraft-design/FAST-OAD).
 
-This template is designed to use [Poetry](https://python-poetry.org) (version 1.2 or above)
+This template is designed to use [Poetry](https://python-poetry.org) (version 1.4.2 or above)
 for managing the development environment.
 Instructions below assume you have it already installed. You may adapt them if you don't 
 want to use Poetry.

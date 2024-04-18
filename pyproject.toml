@@ -39,16 +39,18 @@ classifiers = [
 # the commit fail because "files were modified by this hook". In that case,
 # doing again the commit including changes in docs/requirements.txt will succeed.
 python = "^3.8.1"
-fast-oad-core = "^1.4.2"
+fast-oad-core = "^1.7.1"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7"
-pytest-cov = "^4"
-coverage = { extras = ["toml"], version = "^7" }
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2"
+pytest-cov = "^4.0"
+coverage = { extras = ["toml"], version = "^7.0" }
+nbval = "^0.10"
+
+[tool.poetry.group.lint.dependencies]
 pre-commit = "^3"
 black = { version = "23.1", extras = ["jupyter"] }
 pylint = "^2.16"
-nbval = "^0"
 flake8 = "^6"
 
 [tool.poetry.plugins."fastoad.plugins"]
@@ -65,7 +67,7 @@ line-length = 100
 minversion = "7.0"
 addopts = "--cov-report term-missing --cov-report html --verbose"
 testpaths = ["src", "tests"]
-norecursedirs = ["dist", "build", ".tox"]
+norecursedirs = ["dist", "build", ".tox", ".ipynb_checkpoints"]
 filterwarnings = ["default"]
 
 [tool.coverage.run]
