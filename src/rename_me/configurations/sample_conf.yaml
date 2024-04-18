@@ -19,4 +19,13 @@ model:
   nonlinear_solver: om.NonlinearBlockGS(maxiter=100, atol=1e-2)
   linear_solver: om.DirectSolver()
 
+  sample_discipline:
+    id: fastoad.sample_plugin.sample_discipline
 
+optimization: # This section is needed only if optimization process is run
+  design_variables:
+    - name: sample_input
+      lower: 0.0
+      upper: 1.0
+  objective:
+    - name: sample_output
