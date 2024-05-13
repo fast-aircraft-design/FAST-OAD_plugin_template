@@ -42,31 +42,34 @@ python = "^3.8.1"
 fast-oad-core = "^1.7.1"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.2"
-pytest-cov = "^4.0"
-coverage = { extras = ["toml"], version = "^7.0" }
-nbval = "^0.10"
+pytest = "^8.0"
+pytest-cov = "^5.0"
+coverage = { extras = ["toml"], version = "*" }
+nbval = ">=0.11, <1.0"
 
 [tool.poetry.group.lint.dependencies]
 pre-commit = "^3"
-black = { version = "23.1", extras = ["jupyter"] }
-pylint = "^2.16"
-flake8 = "^6"
+ruff = "0.4.4"
 
 [tool.poetry.plugins."fastoad.plugins"]
+# Here is registered the FAST-OAD plugin:
+# - "plugin_name" can be freely chosen
+# - "rename_me" must be the name of an installed package (see "packages" in tool.poetry section)
+# For more information, see https://fast-oad.readthedocs.io/en/v1.7.1/documentation/custom_modules/add_plugin.html
 "plugin_name" = "rename_me"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.black]
+[tool.ruff]
 line-length = 100
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--cov-report term-missing --cov-report html --verbose"
-testpaths = ["src", "tests"]
+## Uncomment following line to activate coverage report by default:
+# addopts = "--cov-report term-missing --cov-report html --verbose"
+testpaths = ["src"]
 norecursedirs = ["dist", "build", ".tox", ".ipynb_checkpoints"]
 filterwarnings = ["default"]
 

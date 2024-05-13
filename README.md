@@ -90,26 +90,21 @@ and checks for errors, but only compares the outputs of cells with a
 `#NBVAL_CHECK_OUTPUT` marker comment". If you want nbval to check all cell 
 outputs against already saved ones, you need to use `--nbval` as option._ 
 
-### Black
-[Black](https://black.readthedocs.io/en/stable/?badge=stable) automates the code
-formatting.
+### Ruff
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+checks/corrects code style and automates the code formatting.
 
-**Black is configured in `/pyproject.toml` file.**
+Kudos to [Black](https://black.readthedocs.io/en/stable) and 
+[Flake8](https://flake8.pycqa.org/) that are very good tools. Yet, for a fresh start,
+Ruff seems the way to go, since it does the same job as these two, only much faster.
 
-Coupled with pre-commit (see below) and/or integrated with your IDE (see
-[here](https://black.readthedocs.io/en/stable/integrations/editors.html)), it
+**Ruff is configured in `/pyproject.toml` file.**
+
+Coupled with pre-commit (see below) and/or integrated with your IDE, it
 automates all the code formatting, and it is sooo good.
 
-_**Note to PyCharm users**: prefer the [file watcher](https://black.readthedocs.io/en/stable/integrations/editors.html#as-file-watcher), though the 2 other solutions can also be useful)_
-
-
-### Flake8
-[Flake8](https://flake8.pycqa.org/) is a tool for checking style guide, which helps
-avoiding common coding mistakes.
-
-**Flake8 is configured in `/.flake8` file.**
-
-Coupled with pre-commit, it will check each line of code before it is committed.
+_**Note to PyCharm users**: there is a [ruff plugin](https://plugins.jetbrains.
+com/plugin/20574-ruff)._
 
 
 ### pre-commit
@@ -140,4 +135,5 @@ mistake before doing your commit again.
 
 ## Online tools
 
-This section will be expanded in the future with settings for [Binder](https://mybinder.org), [Codacy](https://www.codacy.com), [CodeClimate](https://codeclimate.com), [Codecov](https://about.codecov.io) and [GitHub actions](https://github.com/features/actions).
+This section could be expanded in the future with settings for [Binder](https://mybinder.org), 
+[Codacy](https://www.codacy.com), [CodeClimate](https://codeclimate.com), [Codecov](https://about.codecov.io) and [GitHub actions](https://github.com/features/actions).
