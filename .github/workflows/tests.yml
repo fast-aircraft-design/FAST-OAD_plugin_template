@@ -29,7 +29,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: mpi4py/setup-mpi@v1
 
       - name: Install poetry
         run: pipx install poetry==1.4.2
@@ -42,7 +41,6 @@ jobs:
       - name: Activate environment and install dependencies
         run: |
           poetry env use ${{ matrix.python-version }}
-          poetry install -E mpi4py
 
       - name: Check with Ruff
         run: |
