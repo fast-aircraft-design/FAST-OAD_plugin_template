@@ -41,6 +41,7 @@ jobs:
       - name: Activate environment and install dependencies
         run: |
           poetry env use ${{ matrix.python-version }}
+          poetry install
 
       - name: Check with Ruff
         run: |
