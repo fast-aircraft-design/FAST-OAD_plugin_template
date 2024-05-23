@@ -1,0 +1,59 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]') }}
+    strategy:
+      matrix:
+        python-version: [ "3.8", "3.9", "3.10" ]
+        os: [ ubuntu-20.04, windows-latest, macos-latest ]
+        # Exceptions:
+        # - Python 3.8 and 3.9 is on macos-13 but not macos-latest (macos-14-arm64)
+        #   https://github.com/actions/setup-python/issues/696#issuecomment-1637587760
+        exclude:
+        - { python-version: "3.8", os: "macos-latest" }
+        - { python-version: "3.9", os: "macos-latest" }
+        include:
+        - { python-version: "3.8", os: "macos-13" }
+        - { python-version: "3.9", os: "macos-13" }
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mpi4py/setup-mpi@v1
+
+      - name: Install poetry
+        run: pipx install poetry==1.4.2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
+      - name: Activate environment and install dependencies
+        run: |
+          poetry env use ${{ matrix.python-version }}
+          poetry install -E mpi4py
+
+      - name: Check with Ruff
+        run: |
+          # Fails if Ruff format is not respected
+          poetry run ruff format --check .
+        shell: bash
+
+      - name: Unit tests
+        run: poetry run pytest src
+        shell: bash
+
+      - name: Integration tests
+        run: poetry run pytest --no-cov tests/integration_tests
+        shell: bash
