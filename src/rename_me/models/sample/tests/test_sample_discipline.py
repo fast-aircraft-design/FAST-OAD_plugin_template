@@ -23,9 +23,9 @@ def test_sample_discipline():
     """Tests computation of the sample discipline."""
 
     # Research independent input value in .xml file
-    ivc = oad.DataFile((DATA_FOLDER_PATH / "data.xml").as_posix()).to_ivc()
+    inputs = oad.DataFile(DATA_FOLDER_PATH / "data.xml")
 
     # Run problem and check obtained value(s) is/(are) correct
-    problem = run_system(SampleDiscipline(), ivc)
+    problem = run_system(SampleDiscipline(), inputs)
     sample_output = problem.get_val("sample_output", units="kg")
     assert sample_output == pytest.approx(4.0, abs=1e-3)
