@@ -5,7 +5,7 @@ from pathlib import Path
 
 import fastoad.api as oad
 import pytest
-from fastoad._utils.testing import run_system
+from fastoad.testing import run_system
 
 from ..sample_discipline import SampleDiscipline
 
