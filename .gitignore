@@ -58,3 +58,6 @@ MANIFEST
 # Per-project virtualenvs
 .venv*/
 venv*/
+
+# OpenMDAO reports
+reports/
