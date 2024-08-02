@@ -33,12 +33,6 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-# IMPORTANT: when modifying this list, docs/requirements.txt must be updated for
-# ReadTheDocs to be able to compile the documentation.
-# A pre-commit hook has been added to do this task. As a result, any modification
-# of poetry.lock file will modify docs/requirements.txt and make
-# the commit fail because "files were modified by this hook". In that case,
-# doing again the commit including changes in docs/requirements.txt will succeed.
 python = ">=3.9, <3.12"
 fast-oad-core = "^1.7.4"
 
