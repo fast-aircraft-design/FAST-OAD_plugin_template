@@ -62,8 +62,7 @@ line-length = 100
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-## Uncomment following line to activate coverage report by default:
-# addopts = "--cov-report term-missing --cov-report html --verbose"
+addopts = "--cov-report term-missing --cov-report html --verbose"
 testpaths = ["src"]
 norecursedirs = ["dist", "build", ".tox", ".ipynb_checkpoints"]
 filterwarnings = ["default"]
@@ -72,7 +71,7 @@ filterwarnings = ["default"]
 branch = true
 omit = ["*/test/*", "*/tests/*"]
 [tool.coverage.paths]
-source = ["src/", "*/site-packages/"]
+source = ["src/"]
 [tool.coverage.report]
 # Regexes for lines to exclude from consideration
 exclude_lines = [
