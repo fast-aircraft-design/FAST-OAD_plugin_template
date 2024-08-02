@@ -33,16 +33,25 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
+# Dependencies that users of the plugin will need.
+# Dependency groups below will apply only for developers of this project
 python = ">=3.9, <3.12"
 fast-oad-core = "^1.7.4"
 
+[tool.poetry.group.dev.dependencies]
+# Dependencies that may be used during development process (validation,...) but not needed
+# by end users.
+matplotlib = "^3.9.1"
+
 [tool.poetry.group.test.dependencies]
+# Dependencies for test suite
 pytest = "^8.0"
 pytest-cov = "^5.0"
 coverage = { extras = ["toml"], version = "*" }
 nbval = ">=0.11, <1.0"
 
 [tool.poetry.group.lint.dependencies]
+# Dependencies for "quality control"
 pre-commit = "^3"
 ruff = "0.4.4"
 
