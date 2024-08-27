@@ -43,7 +43,7 @@ fast-oad-core = "^1.7.4"
 [tool.poetry.group.dev.dependencies]
 # Dependencies that may be used during development process (validation,...) but not needed
 # by end users.
-matplotlib = "^3.9.1"
+matplotlib = "^3.9.2"
 
 [tool.poetry.group.test.dependencies]
 # Dependencies for test suite
@@ -55,7 +55,7 @@ nbval = ">=0.11, <1.0"
 [tool.poetry.group.lint.dependencies]
 # Dependencies for "quality control"
 pre-commit = "^3"
-ruff = "0.5.5"
+ruff = "0.6.2"
 
 #------------------------------------------------------------------------------
 [tool.poetry.plugins."fastoad.plugins"]
