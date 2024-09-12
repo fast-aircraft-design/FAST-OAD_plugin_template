@@ -55,14 +55,14 @@ nbval = ">=0.11, <1.0"
 [tool.poetry.group.lint.dependencies]
 # Dependencies for "quality control"
 pre-commit = "^3"
-ruff = "0.6.2"
+ruff = "0.6.4"
 
 #------------------------------------------------------------------------------
 [tool.poetry.plugins."fastoad.plugins"]
 # Here is registered the FAST-OAD plugin:
 # - "plugin_name" can be freely chosen
 # - "rename_me" must be the name of an installed package (see "packages" in tool.poetry section)
-# For more information, see https://fast-oad.readthedocs.io/en/latest/documentation/custom_modules/add_plugin.html
+# For more information, see https://fast-oad.readthedocs.io/en/stable/documentation/custom_modules/add_plugin.html
 "plugin_name" = "rename_me"
 
 #==============================================================================

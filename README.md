@@ -3,7 +3,7 @@
 ## Introduction
 
 This template repository is dedicated to the development of FAST-OAD models, possibly
-packaged as a FAST-OAD plugin. These developments are explained in [FAST-OAD documentation](https://fast-oad.readthedocs.io/en/v1.4.2/documentation/custom_modules/index.html).
+packaged as a FAST-OAD plugin. These developments are explained in [FAST-OAD documentation](https://fast-oad.readthedocs.io/en/stable/documentation/custom_modules/index.html).
 
 This README file explains how to use this template repository. Once your project
 is set up, you are invited to erase this content and write your own README file,
@@ -108,7 +108,7 @@ com/plugin/20574-ruff)._
 
 
 ### pre-commit
-[pre-commit](https://pre-commit.com) is used to set up Git hooks for black and flake8.
+[pre-commit](https://pre-commit.com) is used to set up Git hooks for Ruff.
 
 **pre-commit is configured in `/.pre-commit-config.yaml` file.**
 
@@ -121,16 +121,17 @@ This operation has to be done only once in your development environment. Yet,
 you will have to do it again if the configuration file has been modified.
 
 
-The installed hooks will interrupt the commit process if Black reformats a file or if
-Flake8 detects a mistake.
+The installed hooks will interrupt the commit process if Ruff reformats a file or if
+it detects a mistake.
 
 In case of interruption, simply check the Git output messages and see what happened.
 
-If the interruption comes from Black, doing the commit again should work. The 
+If the interruption comes from reformatting, doing the commit again should work. The 
 interruption simply allows you to check the reformatted files before doing so.
 
-If the interruption comes from Flake8, you will have to fix the identified
-mistake before doing your commit again.
+If the interruption comes from Ruff check, you will have to fix the identified
+mistake before doing your commit again. Running `ruff check --fix` might help
+for the simplest problems.
 
 
 ## Online tools
