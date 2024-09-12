@@ -3,7 +3,7 @@
 ## Introduction
 
 This template repository is dedicated to the development of FAST-OAD models, possibly
-packaged as a FAST-OAD plugin. These developments are explained in [FAST-OAD documentation](https://fast-oad.readthedocs.io/en/v1.4.2/documentation/custom_modules/index.html).
+packaged as a FAST-OAD plugin. These developments are explained in [FAST-OAD documentation](https://fast-oad.readthedocs.io/en/stable/documentation/custom_modules/index.html).
 
 This README file explains how to use this template repository. Once your project
 is set up, you are invited to erase this content and write your own README file,
