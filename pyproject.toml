@@ -4,10 +4,8 @@ name = "RENAME_ME"
 version = "0.1.0"
 description = "This is a plugin for FAST-OAD."
 readme = "README.md"
-authors = [ ]
-packages = [
-    { include = "rename_me", from = "src" },
-]
+authors = []
+packages = [{ include = "rename_me", from = "src" }]
 exclude = ["**/tests/**"]
 
 homepage = "https://github.com/fast-aircraft-design/FAST-OAD"
@@ -38,7 +36,7 @@ classifiers = [
 # Dependencies that users of the plugin will need.
 # Dependency groups below will apply only for developers of this project
 python = ">=3.9, <3.12"
-fast-oad-core = "^1.7.4"
+fast-oad-core = "^1.8.3"
 
 [tool.poetry.group.dev.dependencies]
 # Dependencies that may be used during development process (validation,...) but not needed
@@ -55,7 +53,7 @@ nbval = ">=0.11, <1.0"
 [tool.poetry.group.lint.dependencies]
 # Dependencies for "quality control"
 pre-commit = "^3"
-ruff = "0.6.4"
+ruff = "^0.11.4"
 
 #------------------------------------------------------------------------------
 [tool.poetry.plugins."fastoad.plugins"]
@@ -82,7 +80,18 @@ exclude = ["tests/dummy_plugins/"]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
 # Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
 # McCabe complexity (`C901`) by default.
-select = ["E4", "E7", "E9", "F"]
+select = [
+    "F",   # Enable Pyflakes for identifying logical errors.
+    "I",   # Import sorting using isort rules
+    "UP",  # Check for Python version upgrade compatibility.
+    "FBT", # flake8 plugin to detect boolean traps.
+    "FA",  # Check if a type is used in the module that can be rewritten using PEP 563.
+    "PTH", # A plugin for flake8 finding use of functions that can be replaced by pathlib module.
+    "RUF", # Ruff-specific rules.
+    "E4",
+    "E7",
+    "E9",
+]
 ignore = []
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
@@ -91,6 +100,10 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.isort] # Add optional configurations for import organization
+case-sensitive = true
+relative-imports-order = "closest-to-furthest"
 
 #==============================================================================
 [tool.pytest.ini_options]
@@ -119,5 +132,5 @@ exclude_lines = [
     "raise NotImplementedError",
     # Don't complain if non-runnable code isn't run:
     "if 0:",
-    "if __name__ = = .__main__.:"
+    "if __name__ = = .__main__.:",
 ]
