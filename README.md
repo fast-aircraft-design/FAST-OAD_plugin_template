@@ -119,17 +119,6 @@ If the interruption comes from reformatting, doing the commit again should work.
 
 If the interruption comes from Ruff check, you will have to fix the identified mistake before doing your commit again. Running `ruff check --fix` might help for the simplest problems.
 
-## Importing the FAST-OAD model/plugin in another poetry package
-
-As of now (14/04/2025), gitlab-dtis.onera does not accept SSH acces. So if you want to use your package in a different poetry package you can import it using http in your `pyproject.toml` file by using:
-
-```toml
-rename_me = { git = "http://gitlab-dtis.onera/designlab/fast-oad-models/add-real-path/rename_me.git" }
-```
-
-Make sure that your proxy is set correctly (remember, you want no proxy for http access to gitlab-dtis.onera). More information can be found [here](http://gitlab-dtis.onera/designlab/fast-oad-wiki/wikis/proxy-settings).
-
-
 ## Online tools
 
 This section could be expanded in the future with settings for [Binder](https://mybinder.org), 
