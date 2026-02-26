@@ -18,7 +18,7 @@ class SampleDiscipline(om.ExplicitComponent):
         self.add_output("sample_output", units="kg")
 
     def setup_partials(self):
-        # self.declare_partials("*", "*", method="fd")  # The brutal and easy way
+        # self.declare_partials("*", "*", method="fd")  # The brutal and easy way  # noqa: ERA001
         self.declare_partials("sample_output", "sample_input", method="exact")
 
     def compute(self, inputs, outputs, discrete_inputs=None, discrete_outputs=None):

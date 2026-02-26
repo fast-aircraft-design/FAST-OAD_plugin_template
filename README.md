@@ -12,7 +12,7 @@ This README file explains how to use this template repository. Once your project
 
 It is assumed that you know how to use [Git](https://git-scm.com), [Python](https://www.python.org) and [FAST-OAD](https://github.com/fast-aircraft-design/FAST-OAD).
 
-This template is designed to use [Poetry](https://python-poetry.org) (version 1.4.2 or above, but <2.0) for managing the development environment. Instructions below assume you have it already installed. You may adapt them if you don't want to use Poetry.
+This template is designed to use [Poetry](https://python-poetry.org) (version 2.0 or above) for managing the development environment. Instructions below assume you have it already installed. You may adapt them if you don't want to use Poetry.
 
 _**Note**: In this document, any leading slash (`/`) in a path refers to project root._
 
@@ -24,12 +24,15 @@ After copying the content of this repository and initiating your own Git reposit
 
 - In `/src` folder, rename the `rename_me` folder. It will be the name of your Python module.
 - In `/pyproject.toml` file:
-  - In `tool.poetry` section:
-    - Use the new name of your Python module in the `packages` field.
+  - In `[project]` section:
     - Modify the `name` field with the name you want for your package (will be used in `pip install`, for instance).
-  - In `tool.poetry.plugins."fastoad.plugins"`section:
-    - Use the name of your Python module in the `packages` field (right-hand of the equal sign).
-    - Name your FAST-OAD plugin in the left-hand of the equal sign. Using the package name is recommended.
+    - Update the `description` field to describe your plugin.
+    - Add your name and email in the `authors` field.
+  - In `[project.entry-points."fastoad.plugins"]` section:
+    - Use the name of your Python module on the right-hand side of the equal sign.
+    - Name your FAST-OAD plugin on the left-hand side of the equal sign. Using the package name is recommended.
+  - In `[tool.poetry]` section:
+    - Use the new name of your Python module in the `packages` field.
 
 ### Install your working environment
 
@@ -56,9 +59,9 @@ Here are tools that will work in your local development environment.
 
 [Pytest](https://docs.pytest.org/) is recommended for writing tests. The development environment is set with code coverage tools.
 
-**Pytest and its companions are configured in `/pyproject.toml` file.**
+**Pytest is configured in `/pyproject.toml` file.**
 
-It is recommended to have unit tests in `tests` folders next to tested code. Other kind of tests (integration, non-regression) should be in the `/tests` folder
+It is recommended to have unit tests in `tests` folders next to tested code. Other kind of tests (integration, non-regression) should be in the `/tests` folder.
 
 Unit tests will be launched with simply:
 
@@ -72,7 +75,7 @@ To activate code coverage during unit testing, type:
 pytest --cov
 ```
 
-Other tests will be launched with
+Other tests will be launched with:
 
 ```bash
 pytest tests
@@ -90,16 +93,18 @@ _Note: with `--nbval-lax`, as said in nbval documentation, pytest "runs notebook
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) checks/corrects code style and automates the code formatting.
 
-Kudos to [Black](https://black.readthedocs.io/en/stable) and [Flake8](https://flake8.pycqa.org/) that are very good tools. Yet, for a fresh start, Ruff seems the way to go, since it does the same job as these two, only much faster.
+This template comes configured with plenty of rules that might seem overwhelming at first, but following them will significantly improve your code quality and maintainability.
 
-**Ruff is configured in `/pyproject.toml` file.**
+**Ruff is configured in the separate `ruff.toml` file.**
 
 Coupled with pre-commit (see below) and/or integrated with your IDE, it automates all the code formatting, and it is sooo good.
 
+_**Note to VS Code users**: there is a [ruff plugin](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)._
 _**Note to PyCharm users**: there is a [ruff plugin](https://plugins.jetbrains.com/plugin/20574-ruff)._
 
 ### pre-commit
-[pre-commit](https://pre-commit.com) is used to set up Git hooks for Ruff.
+
+[pre-commit](https://pre-commit.com) is a tool that automatically runs checks (like Ruff) on your code every time you try to make a Git commit, ensuring code quality before changes are saved to your repository.
 
 **pre-commit is configured in `/.pre-commit-config.yaml` file.**
 
@@ -118,8 +123,3 @@ In case of interruption, simply check the Git output messages and see what happe
 If the interruption comes from reformatting, doing the commit again should work. The interruption simply allows you to check the reformatted files before doing so.
 
 If the interruption comes from Ruff check, you will have to fix the identified mistake before doing your commit again. Running `ruff check --fix` might help for the simplest problems.
-
-## Online tools
-
-This section could be expanded in the future with settings for [Binder](https://mybinder.org), 
-[Codacy](https://www.codacy.com), [CodeClimate](https://codeclimate.com), [Codecov](https://about.codecov.io) and [GitHub actions](https://github.com/features/actions).

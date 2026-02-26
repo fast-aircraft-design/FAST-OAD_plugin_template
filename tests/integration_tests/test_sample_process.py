@@ -1,5 +1,4 @@
 import shutil
-from os import mkdir
 from pathlib import Path
 
 import fastoad.api as oad
@@ -12,7 +11,7 @@ RESULTS_FOLDER_PATH = Path(__file__).parent / "results" / Path(__file__).stem
 @pytest.fixture(scope="module")
 def cleanup():
     shutil.rmtree(RESULTS_FOLDER_PATH, ignore_errors=True)
-    mkdir(RESULTS_FOLDER_PATH)
+    RESULTS_FOLDER_PATH.mkdir(parents=True, exist_ok=True)
 
 
 def test_sample_process():
